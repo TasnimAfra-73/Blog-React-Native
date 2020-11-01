@@ -18,6 +18,7 @@ const PostScreen = (props) => {
   console.log(props);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [input, setInput] = useState("");
 
   const loadPosts = async () => {
     setLoading(true);
@@ -68,7 +69,7 @@ const PostScreen = (props) => {
         />
             <Text h4Style={{ padding: 10 }} h4>
               Tasnim
-          {/* {props.author} */}
+          {props.author}
         </Text>
       </View>
       <Text
@@ -89,7 +90,6 @@ const PostScreen = (props) => {
         {/* {props.body} */}
       </Text>
       <Card.Divider />
-          {/* <ActivityIndicator size="large" color="red" animating={loading} /> */}
           <Text>{` 10 Likes, 1 Comments`}</Text>
           <Card.Divider />
            <Card>
@@ -101,7 +101,9 @@ const PostScreen = (props) => {
           // }}
         />
         <Button title='Comment' />
-      </Card>
+          </Card>
+                    <ActivityIndicator size="large" color="red" animating={loading} />
+
 
            <FlatList
           data={posts}

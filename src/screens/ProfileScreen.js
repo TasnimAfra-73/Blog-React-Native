@@ -18,7 +18,7 @@ const ProfileScreen = (props) => {
         style={styles.logo}
         source={require("./../../assets/Profile.jpg")}
       />
-          <Text style={styles.textStyle}>Tasnim Jarin Afra</Text>
+          <Text style={styles.textStyle}>Tasnim</Text>
           <Button
             title= "Delete Profile"
           

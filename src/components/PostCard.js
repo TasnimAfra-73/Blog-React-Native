@@ -23,7 +23,6 @@ const PostCard = (props) => {
           {props.author}
         </Text>
       </View>
-      <Text style={{ fontStyle: "italic" }}> {props.title}</Text>
       <Text
         style={{
           paddingVertical: 10,
@@ -43,10 +42,10 @@ const PostCard = (props) => {
       <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
         <Button
           type="outline"
-          title="  Like (17)"
+          title="  Like (0)"
           icon={<AntDesign name="like2" size={24} color="dodgerblue" />}
         />
-        <Button type="solid" title="Comment (10)" onPress={()=>(props.navigation.navigate('PostScreen',{
+        <Button type="solid" title="Comment (0)" onPress={()=>(props.navigation.navigate('PostScreen',{
               author:props.author,
               date:props.date,
               body:props.body,
