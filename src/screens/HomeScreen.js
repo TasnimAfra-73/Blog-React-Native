@@ -11,8 +11,8 @@ import HeaderHome from "../components/HeaderHome";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { AuthContext } from "../providers/AuthProvider";
 import { useNetInfo } from "@react-native-community/netinfo";
-import * as firebase from "firebase";
-import "firebase/firestore";
+// import * as firebase from "firebase";
+// import "firebase/firestore";
 
 const HomeScreen = (props) => {
   const netinfo = useNetInfo();
@@ -24,25 +24,25 @@ const HomeScreen = (props) => {
   const [input, setInput] = useState("");
 
   const loadPosts = async () => {
-    setLoading(true);
-    firebase
-      .firestore()
-      .collection("posts")
-      .orderBy("created_at", "desc")
-      .onSnapshot((querySnapshot) => {
-        let temp_posts = [];
-        querySnapshot.forEach((doc) => {
-          temp_posts.push({
-            data: doc.data(),
-          });
-        });
-        setPosts(temp_posts);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        alert(error);
-      });
+    // setLoading(true);
+    // firebase
+    //   .firestore()
+    //   .collection("posts")
+    //   .orderBy("created_at", "desc")
+    //   .onSnapshot((querySnapshot) => {
+    //     let temp_posts = [];
+    //     querySnapshot.forEach((doc) => {
+    //       temp_posts.push({
+    //         data: doc.data(),
+    //       });
+    //     });
+    //     setPosts(temp_posts);
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     setLoading(false);
+    //     alert(error);
+    //   });
   };
 
   useEffect(() => {
@@ -71,25 +71,25 @@ const HomeScreen = (props) => {
               type="outline"
               onPress={function () {
                 setLoading(true);
-                firebase
-                  .firestore()
-                  .collection("posts")
-                  .add({
-                    userId: auth.CurrentUser.uid,
-                    body: input,
-                    author: auth.CurrentUser.displayName,
-                    created_at: new Date().toISOString(),
-                    likes: [],
-                    comments: [],
-                  })
-                  .then(() => {
-                    setLoading(false);
-                    alert("Post created Successfully!");
-                  })
-                  .catch((error) => {
-                    setLoading(false);
-                    alert(error);
-                  });
+                // firebase
+                //   .firestore()
+                //   .collection("posts")
+                //   .add({
+                //     userId: auth.CurrentUser.uid,
+                //     body: input,
+                //     author: auth.CurrentUser.displayName,
+                //     created_at: new Date().toISOString(),
+                //     likes: [],
+                //     comments: [],
+                //   })
+                //   .then(() => {
+                //     setLoading(false);
+                //     alert("Post created Successfully!");
+                //   })
+                //   .catch((error) => {
+                //     setLoading(false);
+                //     alert(error);
+                //   });
               }}
             />
           </Card>

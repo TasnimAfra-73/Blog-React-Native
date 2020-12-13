@@ -10,8 +10,8 @@ import CommentCard from "./../components/CommentCard";
 import HeaderHome from "../components/HeaderHome";
 import { AntDesign, Entypo } from "@expo/vector-icons";
 import { AuthContext } from "../providers/AuthProvider";
-import * as firebase from "firebase";
-import "firebase/firestore";
+// import * as firebase from "firebase";
+// import "firebase/firestore";
 import dayjs from "dayjs";
 
 const PostScreen = (props) => {
@@ -22,24 +22,24 @@ const PostScreen = (props) => {
 
   const loadPosts = async () => {
     setLoading(true);
-    firebase
-      .firestore()
-      .collection("posts")
-      .orderBy("created_at", "desc")
-      .onSnapshot((querySnapshot) => {
-        let temp_posts = [];
-        querySnapshot.forEach((doc) => {
-          temp_posts.push({
-            data: doc.data(),
-          });
-        });
-        setPosts(temp_posts);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setLoading(false);
-        alert(error);
-      });
+    // firebase
+    //   .firestore()
+    //   .collection("posts")
+    //   .orderBy("created_at", "desc")
+    //   .onSnapshot((querySnapshot) => {
+    //     let temp_posts = [];
+    //     querySnapshot.forEach((doc) => {
+    //       temp_posts.push({
+    //         data: doc.data(),
+    //       });
+    //     });
+    //     setPosts(temp_posts);
+    //     setLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     setLoading(false);
+    //     alert(error);
+    //   });
   };
 
   useEffect(() => {

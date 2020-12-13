@@ -3,12 +3,13 @@ import { View, StyleSheet } from "react-native";
 import { Input, Button, Card } from "react-native-elements";
 import { FontAwesome, Feather, AntDesign } from "@expo/vector-icons";
 import { AuthContext } from "../providers/AuthProvider";
-import * as firebase from "firebase";
 import Loading from "./../components/Loading";
+import { getDataJSON } from "../functions/AsyncStorageFunctions";
 const SignInScreen = (props) => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   if (isLoading) {
     return <Loading />;
   } else {
@@ -42,20 +43,19 @@ const SignInScreen = (props) => {
                 icon={<AntDesign name="login" size={24} color="white" />}
                 title="  Sign In!"
                 type="solid"
-                onPress={() => {
+                onPress={async() => {
                   setIsLoading(true);
-                  firebase
-                    .auth()
-                    .signInWithEmailAndPassword(Email, Password)
-                    .then((userCreds) => {
-                      setIsLoading(false);
-                      auth.setIsLoggedIn(true);
-                      auth.setCurrentUser(userCreds.user);
-                    })
-                    .catch((error) => {
-                      setIsLoading(false);
-                      alert(error);
-                    });
+                   let users = await getDataJSON('users')
+                  if (Email && Password) {
+                    if (users) {
+                      users.forEach(user => {
+                        if (user.Email == Email && user.Password == Password) {
+                         auth.setIsLoggedIn(true);
+                      auth.setCurrentUser(user);
+                        } 
+                      })
+                    } 
+                  }
                 }}
               />
               <Button
